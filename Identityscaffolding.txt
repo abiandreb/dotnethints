@@ -1,0 +1,11 @@
+dotnet tool install dotnet-aspnet-codegenerator  --global
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design 
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore 
+dotnet add package Microsoft.AspNetCore.Identity.UI 
+dotnet add package Microsoft.EntityFrameworkCore.Design 
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer 
+dotnet aspnet-codegenerator identity --useDefaultUI --dbContext ApplicationDbContext
+dotnet aspnet-codegenerator identity --dbContext ApplicationDbContext --files "Account.Manage.EnableAuthenticator;Account.Manage.Index;Account.Register;Account.ConfirmEmail" --userClass User --force
+dotnet tool install dotnet-ef --global
+dotnet ef migrations add CreateIdentitySchema
+dotnet ef database update
